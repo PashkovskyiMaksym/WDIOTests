@@ -1,14 +1,14 @@
-import LoginPage from '../pageobjects/login.page';
+import LoginPage from  '../pageobjects/login.page';
 import ProfilePage from '../pageobjects/profile.page';
 
-describe('Login', () => {
+describe('Auth', () => {
     beforeEach(() => {
         LoginPage.open();
     });
 
     afterEach(() => {
         browser.execute('window.localStorage.clear()');
-    })
+    });
 
     it('user logs in with valid data', () => {
         LoginPage.setLogin('yapebo2166@grokleft.com');
@@ -21,11 +21,18 @@ describe('Login', () => {
         LoginPage.submitButtonIsDisabled();
     });
 
-    it('fails is invalid data provided', () => {
+    it('fails if invalid data provided', () => {
         LoginPage.setLogin('example@example.com');
-        LoginPage.setPassword('1234567');
+        LoginPage.setPassword('123456');
         LoginPage.clickSubmitButton();
         LoginPage.errorToastAppeared();
+    });
+
+    it('login input is required', () => {
+        LoginPage.setLogin('example');
+        LoginPage.emptyLoginInput();
+        browser.pause(3000)
+        LoginPage.loginRequiredError();
     });
 
 });
