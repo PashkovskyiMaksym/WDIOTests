@@ -4,10 +4,11 @@ module.exports = {
     bail: 0,
 
     specs: [
-        './test/specs/**/*.js',
+        //'./test/specs/**/*.js',
+        './test/specs/navigation.spec.js'
     ],
     exclude: [
-        './test/specs/navigation.spec.js'
+        //'./test/specs/navigation.spec.js'
     ],
 
     waitforTimeout: 10000,
