@@ -6,7 +6,7 @@ import ChallengesPage from '../pageobjects/portal/challenges.portal.page'
 
 describe('Navigation', () => {
     before(() => {
-        browser.login('yapebo2166@grokleft.com', 'Offspring777')
+        browser.login(process.env.LOGIN, process.env.PASSWORD);
     });
 
     beforeEach(() => {
